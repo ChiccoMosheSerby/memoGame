@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import {  Toggle, Sidebar, Top, List } from "./style";
+import { Toggle, Sidebar, Top, List } from "./style";
 
-const SideBar = ({ array, userName, bestScore }) => {
+const SideBar = ({ array, userName }) => {
   const [open, setOpen] = useState(false);
+  const bestScore = localStorage.getItem("bestScore");
+  let newHistory = JSON.parse(localStorage.getItem("history"));
+  if (newHistory === null) {
+    newHistory = [{ score: 0, currentTime: null }];
+  }
   return (
     <>
       <Toggle open={open} onClick={() => setOpen((prev) => !prev)}>
@@ -18,7 +23,7 @@ const SideBar = ({ array, userName, bestScore }) => {
           <div>score</div>
         </Top>
         <List>
-          {array.map((item, index) => {
+          {newHistory.map((item, index) => {
             return (
               <div className="row" key={index}>
                 <div className="time"> {item.currentTime}</div>
