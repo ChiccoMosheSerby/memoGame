@@ -63,6 +63,8 @@ const GamePage = ({ userName }) => {
     const currentTime = new Date().toLocaleString() + "";
     const score = playArr.length;
     setHistory((prev) => [...prev, { currentTime, score }]);
+    sortByKey(history, "score");
+
   };
 
   const click = (idx) => {
