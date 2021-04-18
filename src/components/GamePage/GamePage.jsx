@@ -20,7 +20,7 @@ const GamePage = ({ userName }) => {
     playArr.length * 10
   );
   const [history, setHistory] = useLocalStorage("history", [
-    [{ score: null, currentTime: null }],
+    [{ score: null, currentTime: null, userName: null }],
   ]);
   const isNewGame = playArr.length === 0;
 
@@ -36,7 +36,7 @@ const GamePage = ({ userName }) => {
         setBestSCore((playArr.length - 1) * 10);
       }
     }
-  }, [playArr.length, isNewGame, bestScore, setBestSCore]);
+  }, [playArr.length, isNewGame, bestScore, setBestSCore, userName]);
 
   const play = () => {
     setUserArr([]);
@@ -69,7 +69,7 @@ const GamePage = ({ userName }) => {
     if (newHistory === null) {
       newHistory = [];
     }
-    newHistory.push({ currentTime, score });
+    newHistory.push({ currentTime, score, userName: userName });
     sortByKey(newHistory, "score");
     setHistory(newHistory);
   };
@@ -124,11 +124,7 @@ const GamePage = ({ userName }) => {
           </Play>
         )}
       </StyledBoard>
-      <SideBar
-        array={JSON.parse(localStorage.getItem("history"))}
-        userName={userName}
-        bestScore={bestScore}
-      />
+      <SideBar userName={userName} />
     </Container>
   );
 };

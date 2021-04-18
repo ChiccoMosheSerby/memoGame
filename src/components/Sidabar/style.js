@@ -4,15 +4,15 @@ export const Toggle = styled.div`
   position: absolute;
   background-color: #32101c;
   color: #fff;
-  left: 20px;
+  left: 10px;
   cursor: pointer;
   top: 0;
-  width: 80px;
+  width: 55px;
   padding: 10px;
   ${({ open }) =>
     open &&
     css`
-      left: 250px;
+      left: 300px;
     `}
   transition: all .3s ease-in-out;
   @media (max-width: 660px) {
@@ -21,7 +21,7 @@ export const Toggle = styled.div`
     ${({ open }) =>
       open &&
       css`
-        left: 250px;
+        left: 300px;
       `}
   }
 `;
@@ -29,10 +29,10 @@ export const Sidebar = styled.div`
   transition: all 0.3s ease-in-out;
   z-index: 5000;
   position: absolute;
-  left: -230px;
+  left: -290px;
   height: calc(100vh - 200px);
   top: 0;
-  width: 250px;
+  width: 300px;
   ${({ open }) =>
     open &&
     css`
@@ -60,7 +60,7 @@ export const Sidebar = styled.div`
   }
   overflow-y: auto;
   @media (max-width: 660px) {
-    left: -250px;
+    left: -310px;
     ${({ open }) =>
       open &&
       css`
@@ -77,6 +77,10 @@ export const Top = styled.div`
   border-bottom: black solid 1px;
   background-color: ${(props) => (props.head ? "#32101c" : "black")};
   color: #fff;
+  div{
+      flex:1;
+      text-align: center;
+    }
 `;
 export const List = styled.div`
   display: flex;
@@ -90,6 +94,14 @@ export const List = styled.div`
     width: 100%;
     padding: 10px;
     justify-content: space-between;
+    align-items: center;
     border-bottom: black solid 1px;
+    div{
+      flex:1;
+      text-align: center;
+    }
+  }
+  .best {
+    background-color: #fafa50;
   }
 `;
